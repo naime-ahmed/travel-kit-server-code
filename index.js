@@ -73,11 +73,11 @@ async function run() {
         // Update status
         app.put("/updateStatus/:id", async (req, res) => {
             const id = req.params.id;
-            const updateStatus = req.body;
+            
             const filter = { _id: ObjectId(id) };
 
             orders.updateOne(filter, {
-                $set:{status: updateStatus.status}
+                $set:{status: 'Approved'}
             })
                 .then(result => {
                     res.send(result);
